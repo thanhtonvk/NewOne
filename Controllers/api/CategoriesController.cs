@@ -26,9 +26,9 @@ namespace NewOne.Controllers.api
 
 
         [Route("api/categories/getfoodbycategory")]
-        public IEnumerable<Food> GetFoodsByCategory(int idCategory)
+        public CategoryOfFood GetFoodsByCategory(int idCategory)
         {
-            return db.CategoryOfFoods.Find(idCategory).Foods;
+            return db.CategoryOfFoods.Find(idCategory);
         }
 
 
@@ -60,6 +60,12 @@ namespace NewOne.Controllers.api
             var model = db.CategoryOfFoods.Find(id);
             db.CategoryOfFoods.Remove(model);
             return db.SaveChanges();
+        }
+        [Route("api/CategoryOfFoods/getfoodbycategory")]
+        public IEnumerable<Food> GetFoods(int idcategory)
+        {
+            return db.Foods.Where(x => x.IDCategory == idcategory);
+
         }
     }
 }

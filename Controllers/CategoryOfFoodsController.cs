@@ -14,7 +14,7 @@ namespace NewOne.Controllers
     public class CategoryOfFoodsController : Controller
     {
         private DBContext db = new DBContext();
-        private string baseUrl = "https://localhost:44348/";
+        private string baseUrl = Comon.baseUrl;
 
         // GET: CategoryOfFoods
         public ActionResult Index()
@@ -165,7 +165,7 @@ namespace NewOne.Controllers
                 using(var client = new HttpClient())
                 {
                     client.BaseAddress = new Uri(baseUrl);
-                    var response = client.PutAsJsonAsync<CategoryOfFood>("api/categories/put", categoryOfFood);
+                    var response = client.PutAsJsonAsync<CategoryOfFood >("api/categories/put", categoryOfFood);
                     response.Wait();
                     var result = response.Result;
                     if (result.IsSuccessStatusCode)

@@ -29,10 +29,10 @@
     <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="PhoneNumber" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
     <Property Name="Point" Type="Int32" />
-    <Property Name="Avatar" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="Username" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Avartar" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Username" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Account" Relationship="Self.fk_1" FromRole="Customer" ToRole="Account" />
-    <NavigationProperty Name="Orders" Relationship="Self.fk_6" FromRole="Customer" ToRole="Order" />
+    <NavigationProperty Name="Orders" Relationship="Self.fk_7" FromRole="Customer" ToRole="Order" />
   </EntityType>
   <EntityType Name="Employee">
     <Key>
@@ -47,7 +47,7 @@
     <Property Name="Avatar" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Username" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="Account" Relationship="Self.fk_2" FromRole="Employee" ToRole="Account" />
-    <NavigationProperty Name="Orders" Relationship="Self.fk_7" FromRole="Employee" ToRole="Order" />
+    <NavigationProperty Name="Orders" Relationship="Self.fk_8" FromRole="Employee" ToRole="Order" />
   </EntityType>
   <EntityType Name="Food">
     <Key>
@@ -59,9 +59,9 @@
     <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Status" Type="Byte" />
     <NavigationProperty Name="CategoryOfFood" Relationship="Self.fk_3" FromRole="Food" ToRole="CategoryOfFood" />
-    <NavigationProperty Name="FoodDetails" Relationship="Self.fk_11" FromRole="Food" ToRole="FoodDetails" />
+    <NavigationProperty Name="FoodDeltails" Relationship="Self.fk_4" FromRole="Food" ToRole="FoodDeltails" />
   </EntityType>
-  <EntityType Name="FoodDetail">
+  <EntityType Name="FoodDeltail">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
@@ -72,9 +72,9 @@
     <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Point" Type="Int32" />
     <Property Name="Status" Type="Byte" />
-    <NavigationProperty Name="Food" Relationship="Self.fk_11" FromRole="FoodDetails" ToRole="Food" />
-    <NavigationProperty Name="UsedMaterials" Relationship="Self.fk_4" FromRole="FoodDetails" ToRole="UsedMaterial" />
-    <NavigationProperty Name="OrderDetails" Relationship="Self.fk_9" FromRole="FoodDetails" ToRole="OrderDetails" />
+    <NavigationProperty Name="Food" Relationship="Self.fk_4" FromRole="FoodDeltails" ToRole="Food" />
+    <NavigationProperty Name="OrderDetails" Relationship="Self.fk_10" FromRole="FoodDeltails" ToRole="OrderDetails" />
+    <NavigationProperty Name="UsedMaterials" Relationship="Self.fk_5" FromRole="FoodDeltails" ToRole="UsedMaterial" />
   </EntityType>
   <EntityType Name="Material">
     <Key>
@@ -87,7 +87,7 @@
     <Property Name="Unit" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
     <Property Name="Cost" Type="Int32" />
     <Property Name="Status" Type="Byte" />
-    <NavigationProperty Name="UsedMaterials" Relationship="Self.fk_5" FromRole="Material" ToRole="UsedMaterial" />
+    <NavigationProperty Name="UsedMaterials" Relationship="Self.fk_6" FromRole="Material" ToRole="UsedMaterial" />
   </EntityType>
   <EntityType Name="Order">
     <Key>
@@ -100,9 +100,9 @@
     <Property Name="Type" Type="Byte" />
     <Property Name="Status" Type="Byte" />
     <Property Name="Position" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Customer" Relationship="Self.fk_6" FromRole="Order" ToRole="Customer" />
-    <NavigationProperty Name="Employee" Relationship="Self.fk_7" FromRole="Order" ToRole="Employee" />
-    <NavigationProperty Name="OrderDetails" Relationship="Self.fk_8" FromRole="Order" ToRole="OrderDetails" />
+    <NavigationProperty Name="Customer" Relationship="Self.fk_7" FromRole="Order" ToRole="Customer" />
+    <NavigationProperty Name="Employee" Relationship="Self.fk_8" FromRole="Order" ToRole="Employee" />
+    <NavigationProperty Name="OrderDetails" Relationship="Self.fk_9" FromRole="Order" ToRole="OrderDetails" />
   </EntityType>
   <EntityType Name="OrderDetail">
     <Key>
@@ -110,10 +110,10 @@
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="IDOrder" Type="Int32" Nullable="false" />
-    <Property Name="IDFoodDetails" Type="Int32" Nullable="false" />
+    <Property Name="IDFoodDeltails" Type="Int32" Nullable="false" />
     <Property Name="Quantity" Type="Int32" />
-    <NavigationProperty Name="FoodDetail" Relationship="Self.fk_9" FromRole="OrderDetails" ToRole="FoodDetails" />
-    <NavigationProperty Name="Order" Relationship="Self.fk_8" FromRole="OrderDetails" ToRole="Order" />
+    <NavigationProperty Name="FoodDeltail" Relationship="Self.fk_10" FromRole="OrderDetails" ToRole="FoodDeltails" />
+    <NavigationProperty Name="Order" Relationship="Self.fk_9" FromRole="OrderDetails" ToRole="Order" />
   </EntityType>
   <EntityType Name="sysdiagram">
     <Key>
@@ -130,15 +130,15 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="IDFoodDetails" Type="Int32" Nullable="false" />
+    <Property Name="IDFoodDeltails" Type="Int32" Nullable="false" />
     <Property Name="IDMaterial" Type="Int32" Nullable="false" />
     <Property Name="Quantity" Type="Double" />
-    <NavigationProperty Name="FoodDetail" Relationship="Self.fk_4" FromRole="UsedMaterial" ToRole="FoodDetails" />
-    <NavigationProperty Name="Material" Relationship="Self.fk_5" FromRole="UsedMaterial" ToRole="Material" />
+    <NavigationProperty Name="FoodDeltail" Relationship="Self.fk_5" FromRole="UsedMaterial" ToRole="FoodDeltails" />
+    <NavigationProperty Name="Material" Relationship="Self.fk_6" FromRole="UsedMaterial" ToRole="Material" />
   </EntityType>
   <Association Name="fk_1">
-    <End Role="Account" Type="Self.Account" Multiplicity="1" />
-    <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+    <End Type="Self.Account" Multiplicity="0..1" Role="Account" />
+    <End Type="Self.Customer" Multiplicity="*" Role="Customer" />
     <ReferentialConstraint>
       <Principal Role="Account">
         <PropertyRef Name="Username" />
@@ -149,8 +149,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="fk_2">
-    <End Role="Account" Type="Self.Account" Multiplicity="1" />
-    <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+    <End Type="Self.Account" Multiplicity="1" Role="Account" />
+    <End Type="Self.Employee" Multiplicity="*" Role="Employee" />
     <ReferentialConstraint>
       <Principal Role="Account">
         <PropertyRef Name="Username" />
@@ -161,8 +161,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="fk_3">
-    <End Role="CategoryOfFood" Type="Self.CategoryOfFood" Multiplicity="1" />
-    <End Role="Food" Type="Self.Food" Multiplicity="*" />
+    <End Type="Self.CategoryOfFood" Multiplicity="1" Role="CategoryOfFood" />
+    <End Type="Self.Food" Multiplicity="*" Role="Food" />
     <ReferentialConstraint>
       <Principal Role="CategoryOfFood">
         <PropertyRef Name="ID" />
@@ -172,9 +172,9 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="fk_6">
-    <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
-    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+  <Association Name="fk_7">
+    <End Type="Self.Customer" Multiplicity="1" Role="Customer" />
+    <End Type="Self.Order" Multiplicity="*" Role="Order" />
     <ReferentialConstraint>
       <Principal Role="Customer">
         <PropertyRef Name="ID" />
@@ -184,9 +184,9 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="fk_7">
-    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
-    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+  <Association Name="fk_8">
+    <End Type="Self.Employee" Multiplicity="1" Role="Employee" />
+    <End Type="Self.Order" Multiplicity="*" Role="Order" />
     <ReferentialConstraint>
       <Principal Role="Employee">
         <PropertyRef Name="ID" />
@@ -196,45 +196,45 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="fk_11">
-    <End Role="Food" Type="Self.Food" Multiplicity="1" />
-    <End Role="FoodDetails" Type="Self.FoodDetail" Multiplicity="*" />
+  <Association Name="fk_4">
+    <End Type="Self.Food" Multiplicity="1" Role="Food" />
+    <End Type="Self.FoodDeltail" Multiplicity="*" Role="FoodDeltails" />
     <ReferentialConstraint>
       <Principal Role="Food">
         <PropertyRef Name="ID" />
       </Principal>
-      <Dependent Role="FoodDetails">
+      <Dependent Role="FoodDeltails">
         <PropertyRef Name="IDFood" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="fk_4">
-    <End Role="FoodDetails" Type="Self.FoodDetail" Multiplicity="1" />
-    <End Role="UsedMaterial" Type="Self.UsedMaterial" Multiplicity="*" />
+  <Association Name="fk_10">
+    <End Type="Self.FoodDeltail" Multiplicity="1" Role="FoodDeltails" />
+    <End Type="Self.OrderDetail" Multiplicity="*" Role="OrderDetails" />
     <ReferentialConstraint>
-      <Principal Role="FoodDetails">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="UsedMaterial">
-        <PropertyRef Name="IDFoodDetails" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="fk_9">
-    <End Role="FoodDetails" Type="Self.FoodDetail" Multiplicity="1" />
-    <End Role="OrderDetails" Type="Self.OrderDetail" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="FoodDetails">
+      <Principal Role="FoodDeltails">
         <PropertyRef Name="ID" />
       </Principal>
       <Dependent Role="OrderDetails">
-        <PropertyRef Name="IDFoodDetails" />
+        <PropertyRef Name="IDFoodDeltails" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <Association Name="fk_5">
-    <End Role="Material" Type="Self.Material" Multiplicity="1" />
-    <End Role="UsedMaterial" Type="Self.UsedMaterial" Multiplicity="*" />
+    <End Type="Self.FoodDeltail" Multiplicity="1" Role="FoodDeltails" />
+    <End Type="Self.UsedMaterial" Multiplicity="*" Role="UsedMaterial" />
+    <ReferentialConstraint>
+      <Principal Role="FoodDeltails">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UsedMaterial">
+        <PropertyRef Name="IDFoodDeltails" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_6">
+    <End Type="Self.Material" Multiplicity="1" Role="Material" />
+    <End Type="Self.UsedMaterial" Multiplicity="*" Role="UsedMaterial" />
     <ReferentialConstraint>
       <Principal Role="Material">
         <PropertyRef Name="ID" />
@@ -244,9 +244,9 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="fk_8">
-    <End Role="Order" Type="Self.Order" Multiplicity="1" />
-    <End Role="OrderDetails" Type="Self.OrderDetail" Multiplicity="*" />
+  <Association Name="fk_9">
+    <End Type="Self.Order" Multiplicity="1" Role="Order" />
+    <End Type="Self.OrderDetail" Multiplicity="*" Role="OrderDetails" />
     <ReferentialConstraint>
       <Principal Role="Order">
         <PropertyRef Name="ID" />
@@ -262,51 +262,51 @@
     <EntitySet Name="Customers" EntityType="Self.Customer" />
     <EntitySet Name="Employees" EntityType="Self.Employee" />
     <EntitySet Name="Foods" EntityType="Self.Food" />
-    <EntitySet Name="FoodDetails" EntityType="Self.FoodDetail" />
+    <EntitySet Name="FoodDeltails" EntityType="Self.FoodDeltail" />
     <EntitySet Name="Materials" EntityType="Self.Material" />
     <EntitySet Name="Orders" EntityType="Self.Order" />
     <EntitySet Name="OrderDetails" EntityType="Self.OrderDetail" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
     <EntitySet Name="UsedMaterials" EntityType="Self.UsedMaterial" />
     <AssociationSet Name="fk_1" Association="Self.fk_1">
-      <End Role="Account" EntitySet="Accounts" />
-      <End Role="Customer" EntitySet="Customers" />
+      <End EntitySet="Accounts" Role="Account" />
+      <End EntitySet="Customers" Role="Customer" />
     </AssociationSet>
     <AssociationSet Name="fk_2" Association="Self.fk_2">
-      <End Role="Account" EntitySet="Accounts" />
-      <End Role="Employee" EntitySet="Employees" />
+      <End EntitySet="Accounts" Role="Account" />
+      <End EntitySet="Employees" Role="Employee" />
     </AssociationSet>
     <AssociationSet Name="fk_3" Association="Self.fk_3">
-      <End Role="CategoryOfFood" EntitySet="CategoryOfFoods" />
-      <End Role="Food" EntitySet="Foods" />
-    </AssociationSet>
-    <AssociationSet Name="fk_6" Association="Self.fk_6">
-      <End Role="Customer" EntitySet="Customers" />
-      <End Role="Order" EntitySet="Orders" />
+      <End EntitySet="CategoryOfFoods" Role="CategoryOfFood" />
+      <End EntitySet="Foods" Role="Food" />
     </AssociationSet>
     <AssociationSet Name="fk_7" Association="Self.fk_7">
-      <End Role="Employee" EntitySet="Employees" />
-      <End Role="Order" EntitySet="Orders" />
-    </AssociationSet>
-    <AssociationSet Name="fk_11" Association="Self.fk_11">
-      <End Role="Food" EntitySet="Foods" />
-      <End Role="FoodDetails" EntitySet="FoodDetails" />
-    </AssociationSet>
-    <AssociationSet Name="fk_4" Association="Self.fk_4">
-      <End Role="FoodDetails" EntitySet="FoodDetails" />
-      <End Role="UsedMaterial" EntitySet="UsedMaterials" />
-    </AssociationSet>
-    <AssociationSet Name="fk_9" Association="Self.fk_9">
-      <End Role="FoodDetails" EntitySet="FoodDetails" />
-      <End Role="OrderDetails" EntitySet="OrderDetails" />
-    </AssociationSet>
-    <AssociationSet Name="fk_5" Association="Self.fk_5">
-      <End Role="Material" EntitySet="Materials" />
-      <End Role="UsedMaterial" EntitySet="UsedMaterials" />
+      <End EntitySet="Customers" Role="Customer" />
+      <End EntitySet="Orders" Role="Order" />
     </AssociationSet>
     <AssociationSet Name="fk_8" Association="Self.fk_8">
-      <End Role="Order" EntitySet="Orders" />
-      <End Role="OrderDetails" EntitySet="OrderDetails" />
+      <End EntitySet="Employees" Role="Employee" />
+      <End EntitySet="Orders" Role="Order" />
+    </AssociationSet>
+    <AssociationSet Name="fk_4" Association="Self.fk_4">
+      <End EntitySet="Foods" Role="Food" />
+      <End EntitySet="FoodDeltails" Role="FoodDeltails" />
+    </AssociationSet>
+    <AssociationSet Name="fk_10" Association="Self.fk_10">
+      <End EntitySet="FoodDeltails" Role="FoodDeltails" />
+      <End EntitySet="OrderDetails" Role="OrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="fk_5" Association="Self.fk_5">
+      <End EntitySet="FoodDeltails" Role="FoodDeltails" />
+      <End EntitySet="UsedMaterials" Role="UsedMaterial" />
+    </AssociationSet>
+    <AssociationSet Name="fk_6" Association="Self.fk_6">
+      <End EntitySet="Materials" Role="Material" />
+      <End EntitySet="UsedMaterials" Role="UsedMaterial" />
+    </AssociationSet>
+    <AssociationSet Name="fk_9" Association="Self.fk_9">
+      <End EntitySet="Orders" Role="Order" />
+      <End EntitySet="OrderDetails" Role="OrderDetails" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

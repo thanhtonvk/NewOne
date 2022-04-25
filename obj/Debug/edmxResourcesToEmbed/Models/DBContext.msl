@@ -28,7 +28,7 @@
           <ScalarProperty Name="Address" ColumnName="Address" />
           <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
           <ScalarProperty Name="Point" ColumnName="Point" />
-          <ScalarProperty Name="Avatar" ColumnName="Avatar" />
+          <ScalarProperty Name="Avartar" ColumnName="Avartar" />
           <ScalarProperty Name="Username" ColumnName="Username" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -58,9 +58,9 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="FoodDetails">
-      <EntityTypeMapping TypeName="NewOneManagerModel.FoodDetail">
-        <MappingFragment StoreEntitySet="FoodDetails">
+    <EntitySetMapping Name="FoodDeltails">
+      <EntityTypeMapping TypeName="NewOneManagerModel.FoodDeltail">
+        <MappingFragment StoreEntitySet="FoodDeltails">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="IDFood" ColumnName="IDFood" />
           <ScalarProperty Name="Size" ColumnName="Size" />
@@ -102,7 +102,7 @@
         <MappingFragment StoreEntitySet="OrderDetails">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="IDOrder" ColumnName="IDOrder" />
-          <ScalarProperty Name="IDFoodDetails" ColumnName="IDFoodDetails" />
+          <ScalarProperty Name="IDFoodDeltails" ColumnName="IDFoodDeltails" />
           <ScalarProperty Name="Quantity" ColumnName="Quantity" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -122,7 +122,7 @@
       <EntityTypeMapping TypeName="NewOneManagerModel.UsedMaterial">
         <MappingFragment StoreEntitySet="UsedMaterial">
           <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="IDFoodDetails" ColumnName="IDFoodDetails" />
+          <ScalarProperty Name="IDFoodDeltails" ColumnName="IDFoodDeltails" />
           <ScalarProperty Name="IDMaterial" ColumnName="IDMaterial" />
           <ScalarProperty Name="Quantity" ColumnName="Quantity" />
         </MappingFragment>
