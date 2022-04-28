@@ -27,6 +27,7 @@ namespace NewOne.Controllers
             {
                 if (model.Status == 1)
                 {
+                    Session["NhanVien"] = db.Employees.FirstOrDefault(x => x.Username == username).ID;
                     //nhân viên
                     return RedirectToAction("Index", "Customers", new { area = "NhanVien" });
 

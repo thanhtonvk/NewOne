@@ -10,119 +10,96 @@ using NewOne.Models;
 
 namespace NewOne.Areas.NhanVien.Controllers
 {
-    public class OrdersController : Controller
+    public class OrderDetailsController : Controller
     {
         private DBContext db = new DBContext();
 
-        // GET: NhanVien/Orders
-        public ActionResult Index()
+        // GET: NhanVien/OrderDetails
+        public ActionResult Index(int idOrder)
         {
-            return View(db.Orders.ToList());
+            Session["IDOrder"] = idOrder;
+            return View(db.OrderDetails.Where(x=>x.IDOrder==idOrder).ToList());
         }
 
-        // GET: NhanVien/Orders/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Order order = db.Orders.Find(id);
-            if (order == null)
-            {
-                return HttpNotFound();
-            }
-            return View(order);
-        }
-        public ActionResult Update(int id, int status)
-        {
-            var model = db.Orders.Find(id);
-            model.Status= Byte.Parse(status+"");
-            db.Orders.Add(model);
-            
-            db.Entry(model).State = EntityState.Modified;
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
-        // GET: NhanVien/Orders/Create
+        
+        // GET: NhanVien/OrderDetails/Create
         public ActionResult Create()
         {
+
             return View();
         }
 
-        // POST: NhanVien/Orders/Create
+        // POST: NhanVien/OrderDetails/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Order order)
+        public ActionResult Create(OrderDetail orderDetail)
         {
-          
-                int idNV = int.Parse(Session["NhanVien"].ToString());
-                order.IDEmployee = idNV;
-                order.OrderDate = DateTime.Now;
-                order.Type = 0;
-                order.Status = 0;
-               
-                db.Orders.Add(order);
+            if (ModelState.IsValid)
+            {
+
+                db.OrderDetails.Add(orderDetail);
                 db.SaveChanges();
                 return RedirectToAction("Index");
+            }
 
+            return View(orderDetail);
         }
 
-        // GET: NhanVien/Orders/Edit/5
+        // GET: NhanVien/OrderDetails/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Order order = db.Orders.Find(id);
-            if (order == null)
+            OrderDetail orderDetail = db.OrderDetails.Find(id);
+            if (orderDetail == null)
             {
                 return HttpNotFound();
             }
-            return View(order);
+            return View(orderDetail);
         }
 
-        // POST: NhanVien/Orders/Edit/5
+        // POST: NhanVien/OrderDetails/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,IDCustomer,IDEmployee,OrderDate,Type,Status,Position")] Order order)
+        public ActionResult Edit([Bind(Include = "ID,IDOrder,IDFoodDetails,Quantity")] OrderDetail orderDetail)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(order).State = EntityState.Modified;
+                db.Entry(orderDetail).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(order);
+            return View(orderDetail);
         }
 
-        // GET: NhanVien/Orders/Delete/5
+        // GET: NhanVien/OrderDetails/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Order order = db.Orders.Find(id);
-            if (order == null)
+            OrderDetail orderDetail = db.OrderDetails.Find(id);
+            if (orderDetail == null)
             {
                 return HttpNotFound();
             }
-            return View(order);
+            return View(orderDetail);
         }
 
-        // POST: NhanVien/Orders/Delete/5
+        // POST: NhanVien/OrderDetails/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Order order = db.Orders.Find(id);
-            db.Orders.Remove(order);
+            OrderDetail orderDetail = db.OrderDetails.Find(id);
+            db.OrderDetails.Remove(orderDetail);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
