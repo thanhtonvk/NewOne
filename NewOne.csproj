@@ -143,6 +143,7 @@
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\FoodDetailsController.cs" />
     <Compile Include="Areas\HelpPage\ApiDescriptionExtensions.cs" />
     <Compile Include="Areas\HelpPage\App_Start\HelpPageConfig.cs" />
     <Compile Include="Areas\HelpPage\Controllers\HelpController.cs" />
@@ -524,6 +525,11 @@
     <Content Include="assets\scss\material-dashboard\_variables.scss" />
     <Content Include="Areas\NhanVien\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\FoodDetails\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\FoodDetails\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\FoodDetails\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\FoodDetails\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\FoodDetails\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

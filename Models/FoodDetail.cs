@@ -26,7 +26,7 @@ namespace NewOne.Models
 
         public byte? Status { get; set; }
 
-        public virtual Food Food { get; set; }
+   
 
      
     }
