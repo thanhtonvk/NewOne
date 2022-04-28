@@ -12,11 +12,11 @@ namespace NewOne.Controllers.api
     {
         DBContext db = new DBContext();
         [Route("api/foods/getfood")]
-        public IQueryable<Food> GetFoods(String keyword)
+        public IEnumerable<Food> GetFoods(String keyword)
         {
             if (string.IsNullOrEmpty(keyword)) return db.Foods;
             var model = db.Foods.Where(x => x.Status >= 0);
-            return db.Foods.Where(x => x.Name.ToLower().Contains(keyword.ToLower()) || x.Image.ToLower().Contains(keyword.ToLower()));
+            return db.Foods.Where(x => x.Name.ToLower().Contains(keyword.ToLower()));
         }
         [Route("api/foods/getfoodbyid")]
         public Food Getfood (int id)

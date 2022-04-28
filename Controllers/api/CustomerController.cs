@@ -25,6 +25,7 @@ namespace NewOne.Controllers.api
         public int Post([FromBody] Customer customer)
         {
             var check = db.Customers.FirstOrDefault(x => x.FullName == customer.FullName);
+           
             if( check== null)
             {
                 db.Customers.Add(customer);
