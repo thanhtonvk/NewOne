@@ -178,3 +178,5 @@ F:\Doan4\NewOne\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 F:\Doan4\NewOne\obj\Debug\NewOne.csproj.CopyComplete
 D:\WebAPI\NewOne\bin\Swashbuckle.Core.dll
 D:\WebAPI\NewOne\bin\WebActivatorEx.dll
+F:\Doan4\NewOne\bin\Swashbuckle.Core.dll
+F:\Doan4\NewOne\bin\WebActivatorEx.dll
