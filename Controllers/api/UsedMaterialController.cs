@@ -49,10 +49,10 @@ namespace NewOne.Controllers.api
             db.UsedMaterials.Remove(check);
             return db.SaveChanges();
         }
-        [Route("api/UsedMaterials/getUsedMaterialsbyFoodDeltail")]
-        public IEnumerable <UsedMaterial> GetUsedMaterials(int idfooddeltail)
+        [Route("api/UsedMaterials/getUsedMaterialsbyFoodDetail")]
+        public IEnumerable <UsedMaterial> GetUsedMaterials(int idFoodDetail)
         {
-            return db.UsedMaterials.Where(x => x.IDFoodDeltails == idfooddeltail);
+            return db.UsedMaterials.Where(x => x.IDFoodDetails == idFoodDetail);
         }
     }
 }

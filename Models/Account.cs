@@ -21,6 +21,5 @@ namespace NewOne.Models
 
         public byte? Status { get; set; }
 
-       
     }
 }

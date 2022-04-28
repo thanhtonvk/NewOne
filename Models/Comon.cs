@@ -7,8 +7,6 @@ namespace NewOne.Models
 {
     public class Comon
     {
-        public static String baseUrl = "https://localhost:44348/";
-
-
+        public static string baseUrl = "https://localhost:44348/";
     }
 }

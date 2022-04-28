@@ -9,7 +9,7 @@ namespace NewOne.Models
     [Table("Employee")]
     public partial class Employee
     {
-        
+       
 
         public int ID { get; set; }
 
@@ -35,8 +35,6 @@ namespace NewOne.Models
         [StringLength(20)]
         public string Username { get; set; }
 
-       
-
-       
+      
     }
 }

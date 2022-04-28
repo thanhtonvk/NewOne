@@ -10,6 +10,7 @@ namespace NewOne.Models
     public partial class Material
     {
        
+
         public int ID { get; set; }
 
         [StringLength(50)]
@@ -27,6 +28,5 @@ namespace NewOne.Models
 
         public byte? Status { get; set; }
 
-        
     }
 }

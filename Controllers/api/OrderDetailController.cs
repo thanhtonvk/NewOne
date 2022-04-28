@@ -24,7 +24,7 @@ namespace NewOne.Controllers.api
         [Route("api/OrderDetails/Post")]
         public int Post([FromBody] OrderDetail orderDetail)
         {
-            int index = checkorderdetails(orderDetail.IDFoodDeltails);
+            int index = checkorderdetails(orderDetail.IDFoodDetails);
             if (index > -1)
             {
                 var model = db.OrderDetails.ToList()[index];
@@ -42,7 +42,7 @@ namespace NewOne.Controllers.api
         }
         public int checkorderdetails(int idfooddetails)
         {
-            var model = db.OrderDetails.FirstOrDefault(x => x.IDFoodDeltails == idfooddetails);
+            var model = db.OrderDetails.FirstOrDefault(x => x.IDFoodDetails == idfooddetails);
             if (model == null)
             {
                 return -1;

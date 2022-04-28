@@ -26,10 +26,6 @@ namespace NewOne.Models
         [Column(TypeName = "ntext")]
         public string Position { get; set; }
 
-        public virtual Customer Customer { get; set; }
-
       
-
-       
     }
 }

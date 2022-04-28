@@ -11,12 +11,12 @@ namespace NewOne.Models
     {
         public int ID { get; set; }
 
-        public int IDFoodDeltails { get; set; }
+        public int IDFoodDetails { get; set; }
 
         public int IDMaterial { get; set; }
 
         public double? Quantity { get; set; }
 
-       
+      
     }
 }

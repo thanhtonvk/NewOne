@@ -25,12 +25,12 @@ namespace NewOne.Models
         public int? Point { get; set; }
 
         [Column(TypeName = "ntext")]
-        public string Avartar { get; set; }
+        public string Avatar { get; set; }
 
+        [Required]
         [StringLength(20)]
         public string Username { get; set; }
 
-        
-
+       
     }
 }

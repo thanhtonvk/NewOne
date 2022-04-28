@@ -54,9 +54,9 @@ namespace NewOne.Controllers.api
             return db.SaveChanges();
         }
         [Route("api/foods/getfooddetailbyidfood")]
-        public IEnumerable<FoodDeltail> GetFoodDeltails(int idfood)
+        public IEnumerable<FoodDetail> GetFoodDetails(int idfood)
         {
-            return db.FoodDeltails.Where(x => x.IDFood == idfood);
+            return db.FoodDetails.Where(x => x.IDFood == idfood);
         }
 
     }

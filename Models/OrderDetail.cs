@@ -12,9 +12,10 @@ namespace NewOne.Models
 
         public int IDOrder { get; set; }
 
-        public int IDFoodDeltails { get; set; }
+        public int IDFoodDetails { get; set; }
 
         public int? Quantity { get; set; }
 
+     
     }
 }

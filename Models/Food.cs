@@ -9,7 +9,6 @@ namespace NewOne.Models
     [Table("Food")]
     public partial class Food
     {
-        
 
         public int ID { get; set; }
 
@@ -23,7 +22,6 @@ namespace NewOne.Models
 
         public byte? Status { get; set; }
 
-        
-
+     
     }
 }

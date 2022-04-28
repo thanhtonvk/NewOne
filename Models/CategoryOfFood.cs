@@ -9,6 +9,7 @@ namespace NewOne.Models
     [Table("CategoryOfFood")]
     public partial class CategoryOfFood
     {
+       
 
         public int ID { get; set; }
 

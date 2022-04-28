@@ -12,12 +12,20 @@ namespace NewOne.Controllers.api
     {
         DBContext db = new DBContext();
         [Route("api/Accounts/GetAccount")]
-        public IQueryable<Account> GetAccounts ()
+        public IQueryable<Account> GetAccounts()
         {
             var model = db.Accounts.Where(x => x.Status >= 0);
             return model;
         }
-       
+        [Route("api/Accounts/Login")]
+        [HttpGet]
+        public Account Login(string username, string password)
+        {
+            var model = db.Accounts.FirstOrDefault(x => x.Username == username && x.Password == password);
+            if (model == null) return null;
+            return model;
+        }
+
         [Route("api/Accounts/GetAccountbyUsername")]
         public Account GetAccount(String username)
         {
@@ -39,7 +47,7 @@ namespace NewOne.Controllers.api
             }
         }
         [Route("api/Accounts/Putaccount")]
-        public int Put([FromBody]Account account)
+        public int Put([FromBody] Account account)
         {
             db.Accounts.Add(account);
             db.Entry(account).State = System.Data.Entity.EntityState.Modified;
@@ -54,6 +62,6 @@ namespace NewOne.Controllers.api
             db.Entry(check).State = System.Data.Entity.EntityState.Modified;
             return db.SaveChanges();
         }
-        
+
     }
 }

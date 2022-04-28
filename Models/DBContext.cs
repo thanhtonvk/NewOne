@@ -17,7 +17,7 @@ namespace NewOne.Models
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
         public virtual DbSet<Food> Foods { get; set; }
-        public virtual DbSet<FoodDeltail> FoodDeltails { get; set; }
+        public virtual DbSet<FoodDetail> FoodDetails { get; set; }
         public virtual DbSet<Material> Materials { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<OrderDetail> OrderDetails { get; set; }
@@ -34,21 +34,19 @@ namespace NewOne.Models
                 .Property(e => e.Password)
                 .IsUnicode(false);
 
-            
+          
+
+            modelBuilder.Entity<Customer>()
+                .Property(e => e.PhoneNumber)
+                .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Customer>()
+                .Property(e => e.Username)
+                .IsUnicode(false);
 
            
 
-            modelBuilder.Entity<Customer>()
-                .Property(e => e.PhoneNumber)
-                .IsFixedLength()
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Customer>()
-                .Property(e => e.Username)
-                .IsUnicode(false);
-
-       
-
             modelBuilder.Entity<Employee>()
                 .Property(e => e.PhoneNumber)
                 .IsFixedLength()
@@ -58,7 +56,7 @@ namespace NewOne.Models
                 .Property(e => e.Username)
                 .IsUnicode(false);
 
-    
+         
         }
     }
 }
