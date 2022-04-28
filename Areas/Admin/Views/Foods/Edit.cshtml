@@ -20,7 +20,7 @@
 
     <div class="form-group">
         <p class="control-label  col-md-2">Loại món</p>
-        <div class="col-md-10">
+        <div class="col-md-10 input-group input-group-outline">
             @Html.DropDownListFor(x => x.IDCategory, ViewBag.Category as SelectList, null,new { @class = "form-control"})
             @Html.ValidationMessageFor(model => model.IDCategory, "", new { @class = "text-danger" })
         </div>
@@ -28,7 +28,7 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div class="col-md-10 input-group input-group-outline">
                 @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
             </div>
@@ -36,7 +36,7 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div class="col-md-10 input-group input-group-outline">
                 @Html.EditorFor(model => model.Image, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
             </div>
@@ -44,14 +44,14 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div class="col-md-10 input-group input-group-outline">
                 @Html.EditorFor(model => model.Status, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
+            <div class="col-md-offset-2 col-md-10 input-group input-group-outline">
                 <input type="submit" value="Save" class="btn btn-default" />
             </div>
         </div>
@@ -63,5 +63,4 @@
 </div>
 
 
-    @Scripts.Render("~/bundles/jqueryval")
-}
+
