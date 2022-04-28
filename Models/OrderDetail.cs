@@ -15,7 +15,10 @@ namespace NewOne.Models
         public int IDFoodDetails { get; set; }
 
         public int? Quantity { get; set; }
-
+        public FoodDetail foodDetail()
+        {
+            return new DBContext().FoodDetails.Find(IDFoodDetails);
+        }
      
     }
 }

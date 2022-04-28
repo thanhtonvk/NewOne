@@ -172,6 +172,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Areas\NhanVien\Controllers\OrdersController.cs" />
     <Compile Include="Areas\NhanVien\NhanVienAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AccountsController.cs" />
     <Compile Include="Controllers\api\AccountController.cs" />
@@ -530,6 +531,11 @@
     <Content Include="Areas\Admin\Views\FoodDetails\Details.cshtml" />
     <Content Include="Areas\Admin\Views\FoodDetails\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\FoodDetails\Index.cshtml" />
+    <Content Include="Areas\NhanVien\Views\Orders\Create.cshtml" />
+    <Content Include="Areas\NhanVien\Views\Orders\Delete.cshtml" />
+    <Content Include="Areas\NhanVien\Views\Orders\Details.cshtml" />
+    <Content Include="Areas\NhanVien\Views\Orders\Edit.cshtml" />
+    <Content Include="Areas\NhanVien\Views\Orders\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

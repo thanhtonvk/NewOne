@@ -26,6 +26,15 @@ namespace NewOne.Models
         [Column(TypeName = "ntext")]
         public string Position { get; set; }
 
+        public Customer customer()
+        {
+            return new DBContext().Customers.Find(IDCustomer);
+        }
+        public Employee employee()
+        {
+            return new DBContext().Employees.Find(IDEmployee);
+        }
+
       
     }
 }

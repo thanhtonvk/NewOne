@@ -16,7 +16,5 @@ namespace NewOne.Models
         public int IDMaterial { get; set; }
 
         public double? Quantity { get; set; }
-
-      
     }
 }
